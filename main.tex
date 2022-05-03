@@ -1,0 +1,235 @@
+% Template; to be used with:
+%          spconf.sty  - ICASSP/ICIP LaTeX style file, and
+%          IEEEbib.bst - IEEE bibliography style file.
+% --------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{spconf,amsmath,graphicx}
+
+% Example definitions.
+% --------------------
+\def\x{{\mathbf x}}
+\def\L{{\cal L}}
+
+% Title.
+% ------
+\title{Intelligent Road Safety Warnings System}
+%
+% Single address.
+% ---------------
+\name{Bai Sihai, Lu Zhiping, Men Jinlong, Ng Kwee Boon}
+\address{Institute of Systems Science, National University of Singapore, Singapore 119615}
+
+\begin{document}
+%\ninept
+%
+\maketitle
+%
+
+\begin{abstract}
+% Note: To avoid conflict between the figure, table reference, allocate 1-19 for general use, 20-39 for Johnny, 40-59 for Jinlong, 60-79 for Sihai, 80-99 for Brian.
+[TBA, will consolidate after each person's input]
+\begin{itemize}
+\item Lu Zhiping, blah, blah.
+\item Men Jinlong, Lane detection is essential for autonomous vehicle, especially for route planning. It need a fast and accuracy results. In this project, three typical approaches were fulfilled and compared on lane detection, including, edge detection, image segmentation and row based selection. The performance metrics and limitation of each method are provided.
+\item Bai Sihai, blah, blah.
+\item Ng Kwee Boon , blah, blah.
+\end{itemize}
+%The abstract should consist of one paragraph describing the motivation for your project and a high-level explanation of the methodology you used and results obtained. Note: this project report template is modified from the report template used in Stanford University CS230, https://cs230.stanford.edu/. Please note that this template is a two-column format. Page limit: 8-10 pages including everything.
+
+\end{abstract}
+%
+
+\begin{keywords}
+Road segmentation, Lane detection, Object detection, Distance estimation
+\end{keywords}
+%
+\section{Introduction}
+\label{sec:intro}
+
+[TBA, will consolidate after each person's input]
+\begin{itemize}
+\item Lu Zhiping, blah, blah.
+\item Men Jinlong, Lane detection is essential for autonomous vehicle, especially for route planning. It need a fast and accuracy results. In this project, three typical approaches were fulfilled and compared on lane detection, including, edge detection, image segmentation and row based selection. The performance metrics and limitation of each method are provided.
+\item Bai Sihai, blah, blah.
+\item Ng Kwee Boon , blah, blah.
+\end{itemize}
+%Explain the problem and why it is important. Discuss your motivation for pursuing this problem. Give some background if necessary.
+
+%Clearly state what the input and output are. Be very explicit: “The input to our algorithm is an {image, video, RGB-D, audio}. We then use a {neural network, etc.} to output a predicted {age, facial expression, action music genre, etc.}.” This is very important since different teams have different inputs/outputs spanning different application domains. Being explicit about this makes it easier for readers.
+
+%Add one paragraph to clearly state the contribution/highlights (i.e., the selling point) of your project. The contribution/highlights of this project can be summarized as follows.
+%\begin{itemize}
+%\item First, blah, blah.
+%\item Second, blah, blah.
+%\end{itemize}
+
+\section{Literature review}
+%You should find relevant references (e.g., papers, survey, industrial products), group them into categories based on their approaches, and discuss their strengths and weaknesses, as well as how they are similar to and differ from your work.
+
+\subsection{Road segmentation [Johnny]}
+
+\subsection{Lane detection [Jinlong]}
+
+The limitation for edge detection is occlusion, curved lines not working. And for image segmentation, the computational cost is a bit high. Thus, the final row based selection approach is preferred in this study.
+
+\subsection{Object detection [Sihai]}
+
+\subsection{Distance estimation [Brian]}
+
+\section{Dataset}
+
+\subsection{Road segmentation [Johnny]}
+
+\subsection{Lane detection [Jinlong]}
+Edge detection no need for training. The image segmentation approach used BDD100K for train and test. The row based selection approach used CULane for train and test.
+
+\subsection{Object detection [Sihai]}
+
+\subsection{Distance estimation [Brian]}
+%Describe your dataset: how many categories, how many instances. Include a citation on where you obtained your dataset from. If you collected yourself, described how the data was captured. How many training/validation/test examples do you have?  What is the resolution of your images?  Try to include examples of your data in the report (e.g. include an image, show a waveform, etc.).
+
+
+\section{Proposed approach}
+[TBA] The system design of this project is provided in Figure \ref{figure1}. The proposed approach for each sub-system is provided in below sections.
+\begin{figure}[tbh]
+    \centerline{\includegraphics[width=8cm]{system_design.jpg}}
+    \caption{System design\label{figure1}}
+\end{figure}
+
+\subsection{Road segmentation [Johnny]}
+
+\subsection{Lane detection [Jinlong]}
+
+\subsubsection{Edge detection [Jinlong]}
+\begin{itemize}
+\item Convert original image to HSL
+\item Isolate yellow and white from HSL image
+\item Convert image to grayscale for easier manipulation
+\item Apply Gaussian Blur to smoothen edges
+\item Apply Canny Edge Detection on smoothed gray image
+\item Trace Region Of Interest and discard all other lines identified by our previous step that are outside this region
+\item Perform a Hough Transform to find lanes within our region of interest and trace them in red
+\item Separate left and right lanes
+\item Extrapolate them to create two smooth lines
+\end{itemize}
+\subsubsection{Deeplabv3+ [Jinlong]}
+\subsubsection{Row based selection [Jinlong]}
+The overall architecture for row based selection lane detection approach is shown in Fig.\ref{figure40}.
+\begin{figure}[tbh]
+    \centerline{\includegraphics[width=8cm]{row_based_selection.jpg}}
+    \caption{System design\cite{qin_ultra_2020}\label{figure40}}
+\end{figure}
+\subsection{Object detection [Sihai]}
+
+\subsection{Distance estimation [Brian]}
+%Describe your proposed system. You might want to use a system architecture or flow chart to illustrate your proposed system. For each module, give a detailed description of how it works. Even you use pre-trained model in some modules, provide a description.
+
+\section{Experimental results}
+
+\subsection{Implementation details}
+
+%What about normalization or data augmentation? Is there any pre-processing you did? What (hyper)parameters are used. What are model training details, such as optimizer, epoch, batch size, learning rate, GPU specification, etc.
+[TBA, pre-processing, Johnny and Sihai?]
+
+\subsection{Performance metrics}
+%What your primary metrics are: accuracy, precision, etc. Provide equations for the metrics if necessary.
+\subsubsection{Road segmentation [Johnny]}
+
+\subsubsection{Lane detection [Jinlong]}
+
+\subsubsection{Object detection [Sihai]}
+
+\subsubsection{Distance estimation [Brian]}
+
+\subsection{Experimental results}
+%For results, you want to have a mixture of tables and plots. You need to have both quantitative and qualitative results! Include visualizations of results.
+
+%Experiments are required to provide performance evaluation by comparing your system with either the existing systems (e.g., reference code) or different choices of modules inside your system (e.g., backbone, model hyper-parameters).
+\subsubsection{Road segmentation [Johnny]}
+
+\subsubsection{Lane detection [Jinlong]}
+\begin{figure}[tbh]
+    \centerline{\begin{tabular}{cc}
+        \includegraphics[width=4cm]{line-segments-example.jpg}
+        &\includegraphics[width=4cm]{laneLines_thirdPass.jpg}\\
+    (a) Line segments& (b) Lane lines
+    \end{tabular}}
+    \caption{Edge detection examples\label{figure41}}
+\end{figure}
+\subsubsection{Object detection [Sihai]}
+
+\subsubsection{Distance estimation [Brian]}
+
+
+\subsection{Ablation study}
+It would be good to conduct the ablation studies to evaluate how various components of your framework contribute to its final performance.
+[TBA, Do we need this section?]
+
+\subsection{Discussions and limitations}
+%It would be good to include some examples of where your approach failed and a discussion of why certain approach failed or succeeded. 
+
+%Some Latex examples are provided as follows. An inline equation is $a+b=c$. An example of one-column figure is provided in Figure \ref{figure2}.
+
+%\begin{equation}\label{equation block model}
+%B_{r,c}=\sum\{f(i,j)|(i,j)\in \Omega_{r,c}\}.
+%\end{equation}
+%\begin{equation}\label{equation 1}
+%\sum_{x}=a+b+\hat{c},
+%\end{equation}
+
+%\begin{figure}[tbh]
+%    \centerline{\begin{tabular}{cc|c}
+%        \includegraphics[width=3cm]{iss.png}
+%        &\includegraphics[width=3cm]{iss.png}& text\\
+%    (a) & (b) & (c)
+%    \end{tabular}}
+%    \caption{Test figure (single column).\label{figure2}}
+%\end{figure}
+
+\subsubsection{Road segmentation [Johnny]}
+
+\subsubsection{Lane detection [Jinlong]}
+
+\subsubsection{Object detection [Sihai]}
+
+\subsubsection{Distance estimation [Brian]}
+
+\begin{table}[tbh]
+\caption{The performance comparison.}\label{table1} \centerline{
+    \begin{tabular}{clc|r}
+    \hline\hline
+    Approach & Ref. \cite{He:16CVPR} & Ref. \cite{Nguyen:18IET} & Proposed approach\\
+    Metric A & $0.8181$ & $0.9171$ & $0.9616$ \\\hline
+    Metric B & $0.8236$ & $0.7654$ & $0.8615$ \\\hline
+    \end{tabular}
+    }
+\end{table}
+
+
+\section{Conclusions and future work}
+%Summarize your report and reiterate key points. For future work, if you had more time, more team members, or more computational resources, what would you explore?
+
+%It would be good to have around 15-20 references for the whole report.
+[TBA, will consolidate after each person's input]
+\begin{itemize}
+\item Lu Zhiping, blah, blah.
+\item Men Jinlong, blah, blah.
+\item Bai Sihai, blah, blah.
+\item Ng Kwee Boon , blah, blah.
+\end{itemize}
+
+\section{Author contributions}
+%This section should describe contributions of each team member to the project.
+
+\begin{itemize}
+\item Lu Zhiping, blah, blah.
+\item Men Jinlong, fulfillment of lane detection and provide the offset estimation from the current road center line for the intelligent warning system.
+\item Bai Sihai, blah, blah.
+\item Ng Kwee Boon , blah, blah.
+\end{itemize}
+
+
+\bibliographystyle{IEEEbib}
+\bibliography{references}
+
+\end{document}
